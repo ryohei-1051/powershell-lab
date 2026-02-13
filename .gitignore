@@ -1,1 +1,6 @@
+# Don't upload real CSVs with passwords or real lab data
+data/bulkusers.csv
+data/*.csv
 
+# Optional (if you generate logs later)
+*.log
