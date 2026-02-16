@@ -90,7 +90,11 @@ Remove-ADUser -Identity $Username -WhatIf
 ```
 Then remove `-WhatIf` when you are ready.
 
-
+## What I Practiced / Learned
+- `Import-Csv`, `New-ADUser`, `Remove-ADUser`
+- Existence checks before create/delete
+- Working with OU/CN Distinguished Names
+- Counters + summary output
 
 ## Disclaimer
 Educational/lab use only. Do not upload real passwords or production data to a public repository.
