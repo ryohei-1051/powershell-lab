@@ -82,6 +82,7 @@ Expected behavior:
 - A summary prints at the end.
 
 ## Safety Notes
+
 - `bulkusers_delete.ps1` permanently deletes accounts (no recycle bin restore in many lab setups).
 - If you want a safer test run, temporarily change the delete line to include `-WhatIf`:
 ```
@@ -89,11 +90,7 @@ Remove-ADUser -Identity $Username -WhatIf
 ```
 Then remove `-WhatIf` when you are ready.
 
-## What I Practiced / Learned
-- `Import-Csv`, `New-ADUser`, `Remove-ADUser`
-- Existence checks before create/delete
-- Working with OU/CN Distinguished Names
-- Counters + summary output
+
 
 ## Disclaimer
 Educational/lab use only. Do not upload real passwords or production data to a public repository.
