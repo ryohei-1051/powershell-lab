@@ -1,75 +1,91 @@
-# PowerShell Lab (BCIT): Bulk AD User Create + Delete (CSV)
+# PowerShell Lab: Bulk Active Directory User Create/Delete (CSV)
 
-This repo contains my BCIT in-class PowerShell lab scripts for **bulk user management in Active Directory** using a CSV file.
+This repository archives a BCIT in-class PowerShell lab that performs:
+- Bulk **user creation** in Active Directory from a CSV
+- Bulk **user deletion** in Active Directory from the same CSV
 
-## Files
-- `bulkusers_create.ps1`  
-  Creates AD user accounts from `bulkusers.csv` (skips users that already exist).
+To keep this repo reusable, the sample data uses placeholder values like `example.local`.
+(In my own lab environment, I used `ryohei.lab`.)
 
-- `bulkusers_delete.ps1`  
-  Deletes AD user accounts listed in `bulkusers.csv` (skips users that do not exist).
+## Repo structure
+powershell-lab/
+data/
+bulkusers.csv
+scripts/
+bulkusers_create.ps1
+bulkusers_delete.ps1
+.gitignore
+README.md
 
-- `bulkusers.csv`  
-  Input data source (user attributes + target container DN).
 
 ## Requirements
-- Windows machine with **RSAT / ActiveDirectory PowerShell module**
-- Permissions to create/delete users in the target container (OU/CN)
-- Lab domain environment (recommended)
+- Windows with **RSAT / ActiveDirectory PowerShell module**
+- Permissions to create/delete users in the target OU/container
+- A lab AD environment is recommended
 
-## Important configuration (before you run)
-### 1) CSV path in both scripts
-Both scripts currently use this hardcoded path:
-```powershell
-$CSVPath = "C:\powershell-lab\bulkusers.csv"
+## CSV format
+File: `data/bulkusers.csv`
 
-So either:
-Place the folder at C:\powershell-lab\ (recommended for this lab setup), or
-Edit $CSVPath in each script to match your local path.
-
-### 2) CSV format
-Header used by this lab:
+Header:
+```csv
 firstname,lastname,username,password,email,streetaddress,city,state,country,department,telephone,jobtitle,company,ou
+Minimum fields:
 
-Minimum needed for the scripts to work correctly:
-- username
-- password (for create)
-- ou (DN path like CN=Users,DC=...,DC=...)
-Other fields are optional but supported in bulkusers_create.ps1 (City, Company, Title, etc.).
+username
+password (required for create)
+ou (Distinguished Name, e.g., CN=Users,DC=example,DC=local or OU=Users,DC=example,DC=local)
 
-### 3) How to run
-- Bulk create users
-# Run from anywhere (CSV path is hardcoded in the script)
-.\bulkusers_create.ps1
+Placeholder values (intended)
+Passwords in the sample CSV are CHANGEME
 
+Domain placeholders use example.local / DC=example,DC=local
+
+If you want to run this in your own lab domain (e.g., ryohei.lab):
+Update the create script UPN suffix from example.local to ryohei.lab
+Update the CSV ou DN from DC=example,DC=local to DC=ryohei,DC=lab
+
+Important: CSV path setting (before you run)
+Both scripts currently use a hardcoded CSV path:
+
+$CSVPath = "C:\powershell-lab\bulkusers.csv"
+Choose ONE option:
+
+Option A (no code changes)
+Create the folder:
+C:\powershell-lab\
+
+Copy the repo CSV to:
+C:\powershell-lab\bulkusers.csv
+
+Then run the scripts from anywhere.
+
+Option B (recommended: repo-relative path)
+Edit $CSVPath in both scripts to:
+$CSVPath = Join-Path $PSScriptRoot "..\data\bulkusers.csv"
+Then you can run directly from the repo without copying files.
+
+How to run
+Bulk create users
+.\scripts\bulkusers_create.ps1
 Expected behavior:
-- If a user already exists (SamAccountName matches), it is skipped with a warning.
-- If not, the user is created and counted.\
-- A summary prints at the end.
+If the user already exists (same SamAccountName), it is skipped
+Otherwise, the user is created
+A summary prints at the end
 
-- Bulk delete users (destructive)
-# Run from anywhere (CSV path is hardcoded in the script)
-.\bulkusers_delete.ps1
-
+Bulk delete users (destructive)
+.\scripts\bulkusers_delete.ps1
 Expected behavior:
+If user does not exist, it is skipped
 
-Script checks existence using:
+Otherwise, the user is deleted
+A summary prints at the end
 
-Get-ADUser -LDAPFilter "(sAMAccountName=$Username)"
-
-If user exists, it deletes using:
-- Remove-ADUser -Identity $Username -Confirm:$false
-- If user does not exist, it is skipped with a warning.
-- A summary prints at the end.
-
-Safety notes
-bulkusers_delete.ps1 permanently deletes accounts (no recycle bin restore in many lab setups).
-If you want a safer test run, temporarily change the delete line to include -WhatIf:
-
+Safer test run (recommended)
+Temporarily add -WhatIf to the delete command in the script:
 Remove-ADUser -Identity $Username -WhatIf
 
-### What I practiced / learned
+What I practiced / learned
 Bulk AD automation using Import-Csv, New-ADUser, and Remove-ADUser
 Existence checks before create/delete
-Working with common user attributes and container DNs (OU/CN)
-Tracking results with counters + summaries
+Working with common user attributes and DN paths (OU/CN)
+Tracking results with counters and summaries
