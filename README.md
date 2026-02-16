@@ -24,20 +24,20 @@ Header:
 firstname,lastname,username,password,email,streetaddress,city,state,country,department,telephone,jobtitle,company,ou
 ```
 Minimum fields:
-- username
-- password (create)
-- ou (DN path like CN=Users,DC=example,DC=local)
+- `username`
+- `password` (create)
+- `ou` (DN path like CN=Users,DC=example,DC=local)
 
 Template values:
--password uses CHANGEME
--domain placeholders use example.local / DC=example,DC=local
+- password uses CHANGEME
+- domain placeholders use example.local / DC=example,DC=local
 
 To run in your lab domain (e.g., ryohei.lab), update:
--create script UPN suffix (example.local → your domain)
--CSV ou DN (DC=example,DC=local → your domain DN)
+- create script UPN suffix (example.local → your domain)
+- CSV ou DN (DC=example,DC=local → your domain DN)
 
 CSV path in scripts
--Both scripts read the template CSV from:
+- Both scripts read the template CSV from:
 ```
 $CSVPath = Join-Path $PSScriptRoot "..\data\bulkusers.template.csv"
 ```
