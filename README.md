@@ -22,7 +22,7 @@ File: `data/bulkusers.template.csv`
 Header:
 ```csv
 firstname,lastname,username,password,email,streetaddress,city,state,country,department,telephone,jobtitle,company,ou
-
+```
 Minimum fields:
 username
 password (create)
