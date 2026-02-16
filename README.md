@@ -38,7 +38,7 @@ A template file is provided at:
 
 Required fields:
 - `username`
-- `ou` (Distinguished Name path, e.g., `OU=Users,DC=rnakao,DC=lab`)
+- `ou` (Distinguished Name path, e.g., `CN=Users,DC=example,DC=local`)
 
 Optional fields supported:
 - `password` (use `CHANGEME` in the template)
