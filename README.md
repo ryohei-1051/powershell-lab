@@ -22,3 +22,7 @@ This repo contains my BCIT in-class PowerShell lab scripts for **bulk user manag
 Both scripts currently use this hardcoded path:
 ```powershell
 $CSVPath = "C:\powershell-lab\bulkusers.csv"
+
+So either:
+Place the folder at C:\powershell-lab\ (recommended for this lab setup), or
+Edit $CSVPath in each script to match your local path.
