@@ -1,3 +1,0 @@
-username,password,firstname,lastname,ou,email,streetaddress,city,state,country,telephone,jobtitle,company,department
-jsmith,CHANGEME,John,Smith,"OU=Users,DC=example,DC=local",jsmith@example.local,123 Example St,Vancouver,BC,CA,6045550100,Analyst,ExampleCorp,IT
-

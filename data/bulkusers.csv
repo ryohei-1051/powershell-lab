@@ -1,0 +1,11 @@
+firstname,lastname,username,password,email,streetaddress,city,state,country,department,telephone,jobtitle,company,ou
+Emily,Carter,ECarter,CHANGEME,ecarter,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Daniel,Wright,DWright,CHANGEME,dwright,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Sophia,Mitchell,SMitchell,CHANGEME,smitchell,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Ethan,Ramirez,ERamirez,CHANGEME,eramirez,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Olivia,Bennett,OBennett,CHANGEME,obennett,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+James,Foster,JFoster,CHANGEME,jfoster,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Mia,Howard,MHoward,CHANGEME,mhoward,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Lucas,Torres,LTorres,CHANGEME,ltorres,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Ava,Murphy,AMurphy,CHANGEME,amurphy,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
+Noah,Hughes,NHughes,CHANGEME,nhughes,1234 Canada Way,Burnaby,BC,Canada,Marketing,604-123-5789,Marketing Assistant,Tech Solutions,"CN=Users,DC=example,DC=local"
