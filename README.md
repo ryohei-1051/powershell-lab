@@ -61,7 +61,26 @@ Remove-ADUser -Identity $Username -WhatIf
 
 ## Scripts
 ### Bulk Create Users
+```
+.\bulkusers_create.ps1
+```
+Expected behavior:
+- If a user already exists (SamAccountName matches), it is skipped with a warning.
+- If not, the user is created and counted.
+- A summary prints at the end.
+
 ### Bulk Delete Users (only if your delete script is included)
+```
+.\bulkusers_delete.ps1
+```
+Expected behavior:
+- Script checks existence using:
+  - Get-ADUser -LDAPFilter "(sAMAccountName=$Username)"
+- If user exists, it deletes using:
+  - Remove-ADUser -Identity $Username -Confirm:$false
+- If user does not exist, it is skipped with a warning.
+- A summary prints at the end.
+
 ## Safety Notes
 ## What I Practiced / Learned
 -Import-Csv, New-ADUser, Remove-ADUser
