@@ -1,0 +1,13 @@
+# bulkusers_create.ps1 (WhatIf)
+Created user: ECarter
+...
+Bulk user creation completed:
+Users created: 10
+Existing users skipped: 0
+
+# bulkusers_delete.ps1 (WhatIf)
+Deleted user: ECarter
+...
+Bulk user delete completed:
+Users deleted: 10
+Non-Existing users skipped: 0
