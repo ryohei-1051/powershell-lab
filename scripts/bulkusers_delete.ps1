@@ -2,7 +2,7 @@
 Import-Module ActiveDirectory -ErrorAction Stop
 
 # Store the data from ADUsers.csv into the $ADUsers variable
-$CSVPath = "C:\powershell-lab\bulkusers.csv"
+$CSVPath = "C:\powershell-lab\bulkusers.template.csv"
 $ADUsers = Import-Csv -Path $CSVPath -ErrorAction Stop
 
 # Initialize counters
@@ -35,4 +35,5 @@ foreach ($User in $ADUsers) {
 # Display summary
 Write-Host "`nBulk user delete completed:" -ForegroundColor Cyan
 Write-Host "Users deleted: $DeletedUsers" -ForegroundColor Green
+
 Write-Host "Non-Existing users skipped: $NonExistingUsers" -ForegroundColor Yellow
