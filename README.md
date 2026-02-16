@@ -24,9 +24,9 @@ Header:
 firstname,lastname,username,password,email,streetaddress,city,state,country,department,telephone,jobtitle,company,ou
 ```
 Minimum fields:
--username
--password (create)
--ou (DN path like CN=Users,DC=example,DC=local)
+- username
+- password (create)
+- ou (DN path like CN=Users,DC=example,DC=local)
 
 Template values:
 -password uses CHANGEME
