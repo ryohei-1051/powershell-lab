@@ -1,66 +1,73 @@
 # PowerShell Lab: Bulk Active Directory User Create/Delete (CSV)
 
-This repository archives a BCIT in-class PowerShell lab that performs:
-- Bulk **user creation** in Active Directory from a CSV
-- Bulk **user deletion** in Active Directory from a CSV
+This repo archives a BCIT in-class PowerShell lab for:
+- Bulk **AD user creation** from CSV
+- Bulk **AD user deletion** from CSV
 
-To keep this repo reusable and safe for public sharing, the sample data uses placeholders like `example.local`
-and a template CSV (`bulkusers.template.csv`).
+For public sharing, the sample uses placeholders like `example.local` and a template CSV.
 
-## Repo structure
-powershell-lab/
-data/
-bulkusers.template.csv
-scripts/
-bulkusers_create.ps1
-bulkusers_delete.ps1
-.gitignore
-README.md
-
+## Structure
+- `scripts/bulkusers_create.ps1`
+- `scripts/bulkusers_delete.ps1`
+- `data/bulkusers.template.csv`
+- `.gitignore`
+- `README.md`
 
 ## Requirements
-- Windows with **RSAT / ActiveDirectory PowerShell module**
+- Windows + **RSAT ActiveDirectory module**
 - Permissions to create/delete users in the target OU/container
-- A lab AD environment is recommended
 
-## CSV format
-File: `data/bulkusers.template.csv`
-
+## CSV
+File: `data/bulkusers.template.csv`  
 Header:
 ```csv
 firstname,lastname,username,password,email,streetaddress,city,state,country,department,telephone,jobtitle,company,ou
-
 Minimum fields:
-- username
-- password (required for create)
-- ou (Distinguished Name, e.g., CN=Users,DC=example,DC=local or OU=Users,DC=example,DC=local)
 
-Placeholder values (intended)
-Passwords in the template CSV use CHANGEME
-Domain placeholders use example.local / DC=example,DC=local
+username
 
-If you want to run this in your own lab domain (e.g., ryohei.lab), update:
-the create script UPN suffix from example.local to your domain
-the CSV ou DN from DC=example,DC=local to your domain DN
+password (create)
 
-CSV path setting (how the scripts locate the file)
-Both scripts read the template CSV from this repo path:
+ou (DN path like CN=Users,DC=example,DC=local)
+
+Template values:
+
+password uses CHANGEME
+
+domain placeholders use example.local / DC=example,DC=local
+
+To run in your lab domain (e.g., ryohei.lab), update:
+
+create script UPN suffix (example.local → your domain)
+
+CSV ou DN (DC=example,DC=local → your domain DN)
+
+CSV path in scripts
+Both scripts read the template CSV from:
+
 $CSVPath = Join-Path $PSScriptRoot "..\data\bulkusers.template.csv"
+Run
+From repo root:
 
-How to run
-Run from the repo root:
-Bulk create users
+Create users:
+
 .\scripts\bulkusers_create.ps1
+Delete users (destructive):
 
-Expected behavior:
-- If a user already exists (same SamAccountName), it is skipped
-- Otherwise, the user is created
-- A summary prints at the end
-
-Bulk delete users
 .\scripts\bulkusers_delete.ps1
+Safer delete test:
 
-Expected behavior:
-- If user does not exist, it is skipped
-- Otherwise, the user is deleted
-- A summary prints at the end
+Remove-ADUser -Identity $Username -WhatIf
+What I practiced
+Import-Csv, New-ADUser, Remove-ADUser
+
+Existence checks before create/delete
+
+Working with OU/CN Distinguished Names
+
+Counters + summary output
+
+Disclaimer
+Educational/lab use only. Do not upload real passwords or production data to a public repository.
+
+::contentReference[oaicite:0]{index=0}
