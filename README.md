@@ -34,6 +34,7 @@ powershell-lab/
       common.ps1
   README.md
   .gitignore
+```
 
 ## Labs Index
 
